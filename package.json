@@ -1,0 +1,27 @@
+{
+  "name": "SunQBlog-UserSide-Nuxt",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "core-js": "^3.25.3",
+    "echarts": "5.2.2",
+    "node-sass": "^9.0.0",
+    "nuxt": "^2.15.8",
+    "sass-loader": "^13.3.2",
+    "scss-loader": "^0.0.1",
+    "vue": "^2.7.10",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "less": "3.8.1",
+    "less-loader": "4.1.0",
+    "webpack": "^4.0.0"
+  }
+}
