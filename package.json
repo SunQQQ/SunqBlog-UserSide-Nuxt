@@ -13,7 +13,6 @@
     "echarts": "5.2.2",
     "node-sass": "^9.0.0",
     "nuxt": "^2.15.8",
-    "sass-loader": "^13.3.2",
     "scss-loader": "^0.0.1",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
@@ -21,7 +20,6 @@
   },
   "devDependencies": {
     "less": "3.8.1",
-    "less-loader": "4.1.0",
-    "webpack": "^4.0.0"
+    "less-loader": "4.1.0"
   }
 }
