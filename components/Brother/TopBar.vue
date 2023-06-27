@@ -65,6 +65,7 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   export default {
     layout:'blog',
     name: "TopBar",
@@ -104,10 +105,16 @@
       }
     },
     computed:{
-      Active(){
-        console.log('topbar頁面接收store改变',this.$store.state.Active);
-        return this.$store.state.Active;
-      }
+      // Active(){
+      //   console.log('topbar頁面接收store改变',this.$store.state.Active);
+      //   return this.$store.state.Active;
+      // },
+      ...mapState({
+        Active: state => state.Active
+      })
+      // ...mapState({
+      //     count: state => state.counter.count
+      // })
     }
   }
 </script>

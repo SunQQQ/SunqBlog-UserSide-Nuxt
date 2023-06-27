@@ -160,7 +160,7 @@
 
 <script>
 // import Heartfelt from "../SonCompnent/Heartfelt";
-import Store from "../../store/index";
+// import Store from "../../store/index";
 
 export default {
   name: "AboutMe",
@@ -186,8 +186,8 @@ export default {
     }
   },
   mounted: function () {
-    Store().commit("ChangeActive", 4); // 切换Topbar高亮
-    Store().commit("changeFooter", true); // 展示footer   
+    this.$store.commit("ChangeActive", 4); // 切换Topbar高亮
+    this.$store.commit("changeFooter", true); // 展示footer   
     // this.createLog({
     //   moduleType: "menu",
     //   operateType: "选择菜单",
