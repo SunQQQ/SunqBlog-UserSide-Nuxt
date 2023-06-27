@@ -65,14 +65,12 @@
 </template>
 
 <script>
-  import Store from '../../store/index';
   export default {
     layout:'blog',
     name: "TopBar",
     data: function () {
       return {
         OpenMobileMenu: false, //移动端菜单详情伸开、关闭
-        store: Store()
       }
     },
 
@@ -107,8 +105,8 @@
     },
     computed:{
       Active(){
-        console.log('topbar頁面接收store改变',this.store.state.Active);
-        return this.store.state.Active;
+        console.log('topbar頁面接收store改变',this.$store.state.Active);
+        return this.$store.state.Active;
       }
     }
   }

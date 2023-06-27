@@ -6,19 +6,17 @@
 </template>
 
 <script>
-import store from "../../store/index.js"
 export default {
     layout: "blog",
     name: "Footer",
     data:function(){
         return {
-            store: store()
         }
     },  
     computed: {
         footerShow() {
-            console.log('footer頁面接收store改变',this.store.state.footer.show);
-            return this.store.state.footer.show;
+            console.log('footer頁面接收store改变',this.$store.state.footer.show);
+            return this.$store.state.footer.show;
         }
     }
 }

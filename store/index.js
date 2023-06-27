@@ -39,8 +39,8 @@ export default ()=> new Vuex.Store({
     // 顶部导航栏
     ChangeActive:function (State,Value) {
       State.Active = Value;
-      Vue.set(this.state,'Active',Value);
-      console.log('操作了store的顶部导航栏',this.state.Active);
+      // Vue.set(this.state,'Active',Value);
+      console.log('操作了store的顶部导航栏',State.Active);
     },
     ChangeOpenMobileMenu:function (State,Value) {
       State.OpenMobileMenu = Value;
@@ -76,7 +76,7 @@ export default ()=> new Vuex.Store({
     changeFooter:(state,value)=>{
       state.footer.show = value;
       // Vue.set(this.state.footer,'show',value);
-      // console.log('触发了store中的footer方法',this.state.footer.show);
+      console.log('触发了store中的footer方法',state.footer.show);
     }
   },
   actions: {

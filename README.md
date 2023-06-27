@@ -3,6 +3,9 @@
 ## Build Setup
 
 ```bash
+# 期望node.js 版本
+v20 // 如果node版本不一致，注意单独安装对应的版本的node-sass
+
 # install dependencies
 $ npm install
 
