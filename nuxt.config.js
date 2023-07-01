@@ -2,7 +2,7 @@ export default {
   head: {
     title: 'SunQBlog-UserSide-Nuxt',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'zh-cn' // 默认为中文
     },
     meta: [
       { charset: 'utf-8' },
@@ -11,7 +11,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
     bodyAttrs:{
       class: 'my-body'
@@ -20,7 +20,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/static/css/base.less'
+    '@/static/css/base.less',
+    '@/assets/iconfont/iconfont.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
