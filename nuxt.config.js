@@ -13,7 +13,7 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
-    bodyAttrs:{
+    bodyAttrs: {
       class: 'my-body'
     }
   },
@@ -29,7 +29,8 @@ export default {
     {
       src: '~/plugins/vuex.js',
       ssr: true
-    }
+    },
+    "@/plugins/util.js"
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -40,16 +41,18 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-  ],
+  modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
 
-  generate:{
+  generate: {
     // dir:'dist',
     subFolders: false,
-    fallback:'index.html'
-  }
+    fallback: 'index.html'
+  },
+  serverMiddleware: [
+    '~/middleware/proxy'
+  ],
 }

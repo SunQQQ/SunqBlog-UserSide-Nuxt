@@ -1,6 +1,5 @@
 <template>
   <main-about/>
-  <!-- <Tutorial/> -->
 </template>
 
 <script>
