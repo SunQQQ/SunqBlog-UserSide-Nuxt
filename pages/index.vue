@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import mainAbout from '../components/Main/About.vue';
+// import mainAbout from './About.vue';
 
 export default {
   name: 'IndexPage',
   layout: 'blog',
   components:{
-    'brother-topbar': mainAbout
+    // 'brother-topbar': mainAbout
   }
 }
 </script>

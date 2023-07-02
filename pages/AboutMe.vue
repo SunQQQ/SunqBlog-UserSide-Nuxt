@@ -99,7 +99,7 @@
           <div class="GitPart" @mouseenter="setButtonAnimate(true)" @mouseleave="setButtonAnimate(false)">
             <div class="TopBackBlack"></div>
             <div class="GitPic">
-              <img src="../../static/img/ZhihuIcon.jpg" />
+              <img src="../static/img/ZhihuIcon.jpg" />
             </div>
             <div class="GitBack">
               <i class="iconfont TopBackBlackGit icon-github1"></i>
@@ -164,6 +164,7 @@
 
 export default {
   name: "AboutMe",
+  layout: 'blog',
   data: function () {
     return {
       buttonAnimate: false,
@@ -179,7 +180,7 @@ export default {
     },
     // 联系我的弹出框
     infoMessage: (message) => {
-      Store.commit('ChangeTip', {
+      this.$store.commit('ChangeTip', {
         Show: true,
         Title: message
       });
@@ -198,7 +199,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import "../../static/css/AboutMe.less";
+@import "../static/css/AboutMe.less";
 
 .about-UrlName {
   font-size: 14px;
