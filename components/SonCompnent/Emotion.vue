@@ -12,12 +12,12 @@
 </template>
 
 <script>
-  import Store from '../../store'
+  // import this.$store from '../../this.$store'
   export default {
     name: "Emotion",
     computed:{
       EmotionShow(){
-        return Store.state.EmotionShow;
+        return this.$store.state.EmotionShow;
       }
     },
     data:function(){
@@ -39,13 +39,13 @@
       ClickEmoticon:function (EmoticonNo) {
         var That = this;
 
-        Store.commit('ChangeEmotionShow',false);
-        Store.commit('AppendMessageText','[[' + That.EmotionList[EmoticonNo] + ']]');
+        this.$store.commit('ChangeEmotionShow',false);
+        this.$store.commit('AppendMessageText','[[' + That.EmotionList[EmoticonNo] + ']]');
 
         That.$emit('AppendInputValue');
       },
       OpenEmotion:function (Value) {
-        Store.commit('ChangeEmotionShow',Value);
+        this.$store.commit('ChangeEmotionShow',Value);
       },
     },
   }
