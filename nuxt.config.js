@@ -43,8 +43,9 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  // 对echarts5的ES模块转译为commonjs模块，zrender为echarts底层依赖插件需填写
   build: {
+    transpile: [/echarts/, /zrender/]
   },
 
   generate: {
