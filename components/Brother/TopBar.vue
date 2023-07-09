@@ -13,7 +13,7 @@
           <div :class="Active == 3 ? 'MenuItemActive' : 'MenuItem'" @click="ChangeRouter('FriendUrl')">试验田</div>
           <div :class="Active == 2 ? 'MenuItemActive' : 'MenuItem'" @click="ChangeRouter('TimeLine')">时间轴</div>
           <div :class="Active == 1 ? 'MenuItemActive' : 'MenuItem'" @click="ChangeRouter('MessageBoard')">留言</div>
-          <div :class="Active == 0 ? 'MenuItemActive' : 'MenuItem'" @click="ChangeRouter('BlogIndex')">博文</div>
+          <div :class="Active == 0 ? 'MenuItemActive' : 'MenuItem'" @click="ChangeRouter('index')">博文</div>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@
     <div class="MobileMenuDetail" v-if="OpenMobileMenu" @click="OpenMenu()">
       <div class="MoblieMenuDetailContent">
         <div :class="Active == 0 ? 'MobileMenuDetailItemActive' : 'MobileMenuDetailItem'"
-             @click="ChangeRouter('BlogIndex')">博文
+             @click="ChangeRouter('index')">博文
         </div>
         <div :class="Active == 1 ? 'MobileMenuDetailItemActive' : 'MobileMenuDetailItem'"
              @click="ChangeRouter('MessageBoard')">留言

@@ -280,10 +280,10 @@ export default {
       this.$refs["LeaveMessageTextArea"].focus();
 
       // 填写缓存中游客名
-      var LocalCommonUser = this.GetLocalStorage("SunqBlog");
-      if (LocalCommonUser.toString() != "{}") {
-        this.MessageLeaveName = LocalCommonUser.ArticleCommentNickName;
-      }
+      // var LocalCommonUser = this.GetLocalStorage("SunqBlog");
+      // if (LocalCommonUser.toString() != "{}") {
+        // this.MessageLeaveName = LocalCommonUser.ArticleCommentNickName;
+      // }
     },
 
     CloseMessageSubmit: function () {
@@ -307,7 +307,8 @@ export default {
         let MatchedMessageText = That.MatchEmotion(
           this.$store.getters.GetMessageText
         ),
-          iconNo = this.GetLocalStorage("SunqBlog").ArticleCommentIcon || Math.round(Math.random() * 4);
+          // iconNo = this.GetLocalStorage("SunqBlog").ArticleCommentIcon || Math.round(Math.random() * 4);
+          iconNo = Math.round(Math.random() * 4);
 
         this.GetLocation(function (LocationCityName) {
           That.SQFrontAjax({
@@ -328,15 +329,15 @@ export default {
               this.$store.commit("CleanMessageText");
 
               // 存储用户名到本地
-              That.SetLocalStorage("SunqBlog", {
-                Key: "ArticleCommentNickName",
-                Value: That.MessageLeaveName,
-              });
-              // 存储用户的随机头像放到本地
-              That.SetLocalStorage("SunqBlog", {
-                Key: "ArticleCommentIcon",
-                Value: iconNo,
-              });
+              // That.SetLocalStorage("SunqBlog", {
+              //   Key: "ArticleCommentNickName",
+              //   Value: That.MessageLeaveName,
+              // });
+              // // 存储用户的随机头像放到本地
+              // That.SetLocalStorage("SunqBlog", {
+              //   Key: "ArticleCommentIcon",
+              //   Value: iconNo,
+              // });
 
               // 刷新留言列表
               That.MessageRead();
@@ -388,10 +389,10 @@ export default {
         },
       });
       // 默认填写留言输入框的昵称
-      var LocalCommonUser = this.GetLocalStorage("SunqBlog");
-      if (LocalCommonUser.toString() != "{}") {
-        That.MessageLeaveName = LocalCommonUser.ArticleCommentNickName;
-      }
+      // var LocalCommonUser = this.GetLocalStorage("SunqBlog");
+      // if (LocalCommonUser.toString() != "{}") {
+        // That.MessageLeaveName = LocalCommonUser.ArticleCommentNickName;
+      // }
     },
 
     // 打开回复留言弹框
@@ -416,10 +417,10 @@ export default {
       }, 100);
 
       // 填写缓存中游客名
-      var LocalCommonUser = this.GetLocalStorage("SunqBlog");
-      if (LocalCommonUser.toString() != "{}") {
-        That.MessageLeaveName = LocalCommonUser.ArticleCommentNickName;
-      }
+      // var LocalCommonUser = this.GetLocalStorage("SunqBlog");
+      // if (LocalCommonUser.toString() != "{}") {
+      //   That.MessageLeaveName = LocalCommonUser.ArticleCommentNickName;
+      // }
     },
 
     // 关闭回复留言框
