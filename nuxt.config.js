@@ -1,4 +1,5 @@
 export default {
+  ssr: true,
   head: {
     title: 'SunQBlog-UserSide-Nuxt',
     htmlAttrs: {
@@ -51,7 +52,8 @@ export default {
   generate: {
     // dir:'dist',
     subFolders: false,
-    fallback: 'index.html'
+    fallback: 'index.html',
+    ssr: true
   },
   serverMiddleware: [
     '~/middleware/proxy'
