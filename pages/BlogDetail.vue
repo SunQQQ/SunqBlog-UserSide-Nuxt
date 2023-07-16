@@ -201,7 +201,7 @@ export default {
 
           const rendererMD = new Marked.Renderer();
           rendererMD.image = function (href, title, text) {
-            return `<img onclick="showMarkedImage(event, '${href}')" src="${href}" alt="${text}" title="${
+            return `<img style="width:100%" onclick="showMarkedImage(event, '${href}')" src="${href}" alt="${text}" title="${
               title ? title : ""
             }">`;
           };
