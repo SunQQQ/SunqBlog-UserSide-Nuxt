@@ -82,11 +82,11 @@
       this.$store.commit("changeFooter",true); // 展示footer
 
       // 创建日志
-      // this.createLog({
-      //   moduleType:'menu',
-      //   operateType:'选择菜单',
-      //   operateContent:'时间轴'
-      // });
+      this.createLog({
+        moduleType:'menu',
+        operateType:'选择菜单',
+        operateContent:'时间轴'
+      });
     }
   }
 </script>
