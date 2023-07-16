@@ -321,13 +321,12 @@ export default {
               iconNo: iconNo,
             },
             Success: function () {
-              this.$store.commit("ChangeTip", {
+              That.$store.commit("ChangeTip", {
                 Show: true,
                 Title: "留言成功",
               });
               // 清空留言框
-              this.$store.commit("CleanMessageText");
-
+              That.$store.commit("CleanMessageText");
               // 存储用户名到本地
               // That.SetLocalStorage("SunqBlog", {
               //   Key: "ArticleCommentNickName",
