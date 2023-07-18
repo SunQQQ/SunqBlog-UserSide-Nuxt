@@ -137,10 +137,10 @@
                     <!-- <div class="weathDay">11月23日</div> -->
                     <div class="weathDay">{{ item.date }}</div>
                     <div class="weathIcon">
-                      <!-- <i :class="`iconfont ${item.dayweatherIcon} AboutMeIcon`" style="font-size:1.8rem"></i> -->
-                      <svg class="icon" aria-hidden="true">
+                      <i :class="`iconfont ${item.dayweatherIcon}`" style="font-size:1.8rem;color:#03a9f47d"></i>
+                      <!-- <svg class="icon" aria-hidden="true">
                         <use :xlink:href="`#${item.dayweatherIcon}`"></use>
-                      </svg>
+                      </svg> -->
                     </div>
                     <div class="weathChinese" :title="item.dayweather">{{ item.dayweather }}</div>
                     <div class="temperature">
