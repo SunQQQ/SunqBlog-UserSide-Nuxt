@@ -14,7 +14,7 @@ export default {
       { name: 'Keywords', content: '个人网站,个人博客,开源博客,页面自适应,vue+nodeJS,风格清新,功能完善,内容管理系统,服务端渲染,博客模版,SEO优化' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/readme_img/favicon.ico' },
     ],
     bodyAttrs: {
       class: 'my-body'
