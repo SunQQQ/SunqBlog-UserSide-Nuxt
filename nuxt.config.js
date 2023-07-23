@@ -48,7 +48,7 @@ export default {
 
   // 对echarts5的ES模块转译为commonjs模块，zrender为echarts底层依赖插件需填写
   build: {
-    transpile: [/echarts/, /zrender/],
+    transpile: [/echarts/, /zrender/,/vue-particles/],
     buildDir: 'dist'
   },
 

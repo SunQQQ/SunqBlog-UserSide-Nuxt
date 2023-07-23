@@ -120,7 +120,6 @@
 <script>
   import Heartfelt from '@/components/SonCompnent/Heartfelt';  
   import Pagination from '@/components/SonCompnent/Pagination';
-  // import this.$store from '../../this.$store'
 
   export default {
     name: "BlogIndex",

@@ -153,14 +153,13 @@
           </div>
         </div>
       </div>
-      <!-- <Heartfelt></Heartfelt> -->
+      <Heartfelt></Heartfelt>
     </div>
   </transition>
 </template>
 
 <script>
-// import Heartfelt from "../SonCompnent/Heartfelt";
-// import Store from "../../store/index";
+import Heartfelt from '@/components/SonCompnent/Heartfelt';  
 
 export default {
   name: "AboutMe",
@@ -171,7 +170,7 @@ export default {
     };
   },
   components: {
-    // Heartfelt,
+    Heartfelt,
   },
   methods: {
     // 设置按钮动画的开始与停止

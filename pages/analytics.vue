@@ -34,12 +34,12 @@
       <pie-chart></pie-chart>
       <userAction></userAction>
     </div>
-    <!-- <Heartfelt></Heartfelt> -->
+    <Heartfelt></Heartfelt>
   </div>
 </template>
 
 <script>
-// import Heartfelt from '../SonCompnent/Heartfelt';
+import Heartfelt from '@/components/SonCompnent/Heartfelt';  
 import lineChart from '@/components/SonCompnent/analytics/line-chart';
 import mapChart from '@/components/SonCompnent/analytics/map-chart';
 import pieChart from '@/components/SonCompnent/analytics/pie-chart';
@@ -49,7 +49,7 @@ export default {
   name: "analyticsPlus",
   layout: 'blog',
   components: {
-    // Heartfelt,
+    Heartfelt,
     lineChart,
     mapChart,
     pieChart,
