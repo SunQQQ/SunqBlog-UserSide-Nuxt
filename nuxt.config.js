@@ -7,7 +7,7 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1,, user-scalable=yes' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no'},
       { name: 'description', 
         content: "sunq'blog-孙权的个人网站，独立开发维护，包含用户端/管理后台/后端接口，网站风格清新功能完善。具备内容管理、访问数据分析、服务端渲染、表情包、天气预报、屏幕自适应等功能。且所有代码免费开源，可作为模版改造使用！" 
       },
