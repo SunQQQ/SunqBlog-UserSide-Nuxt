@@ -9,26 +9,29 @@
               <i class="iconfont icon-person AboutMeIcon" style="color: #49a9ee"></i>本博客不强制游客注册/登录，留言/评论等功能只需填入昵称，即可使用。
             </p>
             <p>
-              <i class="iconfont AboutMeIcon icon-github" style="color: #948aec"></i>博客对外开放管理后台、流量数据、所有源码等，分享技术，毫无保留。
+              <i class="iconfont AboutMeIcon icon-github" style="color: #948aec"></i>对外开放管理后台、流量数据等。让游客全场景体验个人网站的运营乐趣。
+            </p>
+            <p>
+              <i class="iconfont AboutMeIcon icon-wangzhanxinxi" style="color: #948aec"></i>整套代码开源，源码可当作模板使用，轻松改造为官网/个人博客等内容管理平台
             </p>
             <p>
               <i class="iconfont AboutMeIcon icon-fuwuqi"
-                style="color: #f78e3d"></i>博客用户端、管理后台、后端接口、UI设计、服务器部署全部由一人维护。持续优化，随时更新。
+                style="color: #f78e3d"></i>用户端、管理后台、后端接口、UI设计、服务器部署全部由一人维护。持续优化，随时更新。
             </p>
             <p>
-              <i class="iconfont icon-tool AboutMeIcon"
-                style="color: #3db8c1"></i>已实现各种父子组件、数据缓存、防抖节流、用户轨迹、首屏优化、访问数据分析等功能。
+              <i class="iconfont AboutMeIcon icon-quanju_qianduanjiemian"
+                style="color: #3db8c1"></i>源码有Vue-cli基础版本，与利于SEO的Nuxt版本。任君挑选。
             </p>
             <p>
-              <i class="iconfont icon-aihao1 AboutMeIcon" style="color: #f46e65"></i>跪求Github一赞，点个星星将是对开源开发者的最大支持与鼓励！
+              <i class="iconfont icon-aihao1 AboutMeIcon" style="color: #f46e65"></i>源码在Github整体获得230余赞，亦有技术交流群共同学习。
             </p>
           </div>
 
           <div class="BigBlock AboutMeMarginTop main-text">
-            <div class="TitleFontLine">博客技术</div>
+            <div class="TitleFontLine">技术实现</div>
             <p>
               <i class="iconfont AboutMeIcon icon-wangzhanxinxi"
-                style="color: #f46e65"></i>本博客纯手工编写，未使用第三方建站或流量统计工具。代码开源，欢迎匡正
+                style="color: #f46e65"></i>本博客纯手工编写，未使用第三方建站或流量统计工具。灵活定制，可拓展性强。
             </p>
             <p>
               <i class="iconfont AboutMeIcon icon-quanju_qianduanjiemian" style="color: #3dbd7d"></i>用户端手写的UI组件 +
@@ -36,10 +39,14 @@
             </p>
             <p>
               <i class="iconfont AboutMeIcon icon-fuwuqi"
-                style="color: #f78e3d"></i>服务端语言使用node.js、框架使用Express，博客部署在腾讯云、使用Linux服务器
+                style="color: #f78e3d"></i>服务端语言使用Node.js、框架使用Express，博客部署在Nginx、使用Linux服务器
             </p>
             <p>
-              <i class="iconfont AboutMeIcon icon-dataBase" style="color: #49a9ee"></i>数据库使用MongoDB，可视化工具用的Robo 3T
+              <i class="iconfont AboutMeIcon icon-dataBase" style="color: #49a9ee"></i>数据库使用MongoDB，数据表结构已开源
+            </p>
+            <p>
+              <i class="iconfont icon-tool AboutMeIcon"
+                style="color: #3db8c1"></i>已具备各种父子组件、数据缓存、防抖节流、用户轨迹、首屏优化、访问数据分析等功能。
             </p>
             <p>
               <i class="iconfont AboutMeIcon icon-github" style="color: #948aec"></i>用户端/管理端/后端代码：<a
@@ -110,17 +117,17 @@
                 target="_blank">博客源码</a>
               <div class="BlogStatistic">
                 <div class="BlogStatisticItem">
-                  <div class="BlogStatisticItemNum">49</div>
+                  <div class="BlogStatisticItemNum">75</div>
                   <div class="BlogStatisticItemText AboutMeGitData">
                     Followers
                   </div>
                 </div>
                 <div class="BlogStatisticItem">
-                  <div class="BlogStatisticItemNum">160</div>
+                  <div class="BlogStatisticItemNum">230</div>
                   <div class="BlogStatisticItemText AboutMeGitData">Star</div>
                 </div>
                 <div class="BlogStatisticItem">
-                  <div class="BlogStatisticItemNum">17</div>
+                  <div class="BlogStatisticItemNum">19</div>
                   <div class="BlogStatisticItemText AboutMeGitData">
                     Repositories
                   </div>
