@@ -24,7 +24,7 @@
                 class="iconfont AboutMeIcon icon-wangzhanxinxi"
                 style="color: #948aec"
               ></i
-              >整套代码开源，源码可当作模板使用，轻松改造为官网/个人博客等内容管理平台
+              >整套代码开源，<a href="https://github.com/SunQQQ" target="_blank">源码</a>可当作模板使用，轻松改造为官网/个人博客等内容管理平台
             </p>
             <p>
               <i
@@ -45,11 +45,11 @@
                 class="iconfont icon-aihao1 AboutMeIcon"
                 style="color: #f46e65"
               ></i
-              >源码在Github整体获得230余赞，亦有技术交流群共同学习。
+              >源码在<a href="https://github.com/SunQQQ" target="_blank">Github</a>整体获得230余赞，亦有技术交流群共同学习。
             </p>
           </div>
 
-          <div class="BigBlock AboutMeMarginTop main-text">
+          <div class="BigBlock AboutMeMarginTop main-text"> 
             <div class="TitleFontLine">技术实现</div>
             <p>
               <i
@@ -91,11 +91,7 @@
                 class="iconfont AboutMeIcon icon-github"
                 style="color: #948aec"
               ></i
-              >用户端/管理端/后端代码：<a
-                href="https://github.com/SunQQQ"
-                target="_blank"
-                >GitHub地址</a
-              >。整套代码都在这了
+              >用户端/管理端/后端代码：<a href="https://github.com/SunQQQ" target="_blank">GitHub地址</a>。整套代码都在这了
             </p>
           </div>
 
