@@ -12,12 +12,11 @@
 </template>
 
 <script>
-  import Store from '../../store'
   export default {
     name: "Loading",
     computed:{
       Loading(){
-        return Store.state.Loading;
+        return this.$store.state.Loading;
       }
     }
   }

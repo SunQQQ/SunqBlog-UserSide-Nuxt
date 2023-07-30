@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Store from '../store/index';
 import Vue from 'vue';
 
 // 设置axios的超时重新请求，一共请求3次，每次请求间隔1秒
@@ -67,57 +66,53 @@ Vue.prototype.DateFormat = function (UTCDate) {
  * @constructor
  */
 Vue.prototype.SQFrontAjax = function (Para) {
+  let that = this;
   // 如果设置了noLoading参数（有这个字段），则不再加载loading
-  // if (!Para.noLoading) Store.commit('ChangeLoading', true);
-  // if (!Para.noLoading) Vue.$store.commit('ChangeLoading', true);
+  if (!Para.noLoading) this.$store.commit('ChangeLoading', true);
 
   if (!Para['UploadData']) {
     Para['UploadData'] = {};
   }
-
   axios.post(Para['Url'], Para['UploadData'], { timeout: 10000 }).then(function (response) {
-    // if (!Para.noLoading) Store.commit('ChangeLoading', false);
-    // if (!Para.noLoading) Vue.$store.commit('ChangeLoading', false);
-
+    if (!Para.noLoading) that.$store.commit('ChangeLoading', false);
     if (response.data.status == '0') {
       Para['Success'](response.data.data);
     } else {
-      // Store.commit('ChangeTip', {
-      //   Show: true,
-      //   Title: response.data.data
-      // });
+      that.$store.commit('ChangeTip', {
+        Show: true,
+        Title: response.data.data
+      });
     }
   }).catch(function (error) {
-    // if (!Para.noLoading) Store.commit('ChangeLoading', false);
-
-    // if (error.response) { // 请求超时时，前端会终止http请求。故请求是没有响应值的，error.response为空
-    //   if (error.response.status == '500') {
-    //     Store.commit('ChangeTip', {
-    //       Show: true,
-    //       Title: '网络异常，请检查网络'
-    //     });
-    //   } else if (error.response.status == '404') { // 404时也是有response的
-    //     Store.commit('ChangeTip', {
-    //       Show: true,
-    //       Title: '您访问的接口不存在...'
-    //     });
-    //   } else { // 500和404之外的状态码直接弹框展示statusText
-    //     Store.commit('ChangeTip', {
-    //       Show: true,
-    //       Title: error.response.statusText
-    //     });
-    //   }
-    // } else if (error.request && error.request.readyState == 4 && error.request.status == 0) {
-    //   Store.commit('ChangeTip', {
-    //     Show: true,
-    //     Title: '接口访问超时'
-    //   });
-    // } else {
-    //   Store.commit('ChangeTip', {
-    //     Show: true,
-    //     Title: error.message
-    //   });
-    // }
+    if (!Para.noLoading) that.$store.commit('ChangeLoading', false);
+    if (error.response) { // 请求超时时，前端会终止http请求。故请求是没有响应值的，error.response为空
+      if (error.response.status == '500') {
+        that.$store.commit('ChangeTip', {
+          Show: true,
+          Title: '网络异常，请检查网络'
+        });
+      } else if (error.response.status == '404') { // 404时也是有response的
+        that.$store.commit('ChangeTip', {
+          Show: true,
+          Title: '您访问的接口不存在...'
+        });
+      } else { // 500和404之外的状态码直接弹框展示statusText
+        that.$store.commit('ChangeTip', {
+          Show: true,
+          Title: error.response.statusText
+        });
+      }
+    } else if (error.request && error.request.readyState == 4 && error.request.status == 0) {
+      that.$store.commit('ChangeTip', {
+        Show: true,
+        Title: '接口访问超时'
+      });
+    } else {
+      that.$store.commit('ChangeTip', {
+        Show: true,
+        Title: error.message
+      });
+    }
   });
 };
 

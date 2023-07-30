@@ -240,12 +240,12 @@
               // 停止分页器的滚动监听
               That.$refs.Pagi.SetUpdate(false);
               // 下拉到底部后，展示footer
-              this.$store.commit("changeFooter",true);
+              That.$store.commit("changeFooter",true);
             } else {
               That.$refs.Pagi.SetUpdate(true);
 
               // 还有分页时，隐藏footer
-              this.$store.commit("changeFooter",false);
+              That.$store.commit("changeFooter",false);
               // 创建日志
               That.createLog({
                 moduleType: 'pageTurn',

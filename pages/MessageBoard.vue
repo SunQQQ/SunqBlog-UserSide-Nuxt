@@ -455,10 +455,10 @@ export default {
             That.AticleBottom = true;
             // 停止分页器的滚动监听
             That.$refs.Pagi.SetUpdate(false);
-            this.$store.commit("changeFooter",true); // 展示footer
+            That.$store.commit("changeFooter",true); // 展示footer
           } else {
             That.$refs.Pagi.SetUpdate(true);
-            this.$store.commit("changeFooter",false); // 隐藏footer
+            That.$store.commit("changeFooter",false); // 隐藏footer
             // 创建日志
             That.createLog({
               moduleType: "pageTurn",
