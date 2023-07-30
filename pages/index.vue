@@ -156,7 +156,6 @@
             That.Tags = data;
             That.Tags.Active = '';
             That.DefaultGraph.ArticleTagPart = false;
-            debugger
           }
         });
 

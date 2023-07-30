@@ -265,7 +265,6 @@ Vue.prototype.setSQCookie = function (name, value, exHour) {
   d.setTime(d.getTime() + exHour * 60 * 60 * 1000);
   var expires = 'expires=' + d.toGMTString(); // cookie的语法要求是这个标志，和这个时间格式
   document.cookie = name + '=' + value + '; ' + expires;
-  console.log('种下cookie', name + '=' + value + '; ' + expires);
 };
 
 /**

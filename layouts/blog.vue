@@ -8,7 +8,7 @@
 
         <!-- 这里是公共区域内容 -->
         <brother-footer/>
-
+        <tips/>
         <canvas-bac/>
     </div>
 </template>
@@ -16,6 +16,7 @@
 <script>
 import BrotherTopbar from '../components/Brother/TopBar.vue';
 import BrotherFooter from '../components/Brother/Footer.vue';
+import Tips from '../components/Brother/Tips.vue';
 import CanvasBac from '../components/Brother/CanvasBac.vue';
 
 export default {
@@ -23,6 +24,7 @@ export default {
   components:{
     'brother-topbar': BrotherTopbar,
     'brother-footer': BrotherFooter,
+    'tips': Tips,
     'canvas-bac': CanvasBac
   }
 }
