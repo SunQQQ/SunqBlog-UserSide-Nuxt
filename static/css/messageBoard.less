@@ -1,0 +1,443 @@
+@import "./AboutMe";
+@import "./BlogIndex";
+@import "./BlogDetail";
+
+/*pc端*/
+@media only screen and (min-device-width: 768px) {
+  .WriteMessageFrameFadeIn {
+    background-color: @fore_color;
+    width: 42rem;
+    margin: auto;
+    .myflex(start);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25vh;
+    padding: 1.5rem 1.5rem 2rem 1rem;
+    animation: FadeIn 0.2s linear;
+    animation-fill-mode: forwards;
+
+    overflow: hidden;
+  }
+
+  .WriteMessageFrameFadeOut {
+    background-color: @fore_color;
+    width: 42rem;
+    margin: auto;
+    .myflex(start);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25vh;
+    padding: 1.5rem 1.5rem 2rem 1rem;
+    animation: FadeOut 0.2s linear;
+    animation-fill-mode: forwards;
+    /*animation-delay: 1s;*/
+    overflow: hidden;
+  }
+
+  .MessageBoardCover {
+    width: 100%;
+    height: 95vh;
+    position: relative;
+    background: url(../../static/img/LeaveMessageBack.jpg) no-repeat 50% #cef;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .MessageBoardListBottom {
+    background-color: @fore_color;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid @BorderColor;
+    border-top: none;
+    font-size: 1rem;
+  }
+
+  .boat {
+    display: block;
+    position: absolute;
+    animation: boatSwimming 150s linear;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    /* Safari 和 Chrome */
+    animation-iteration-count: 1;
+    // -webkit-animation-iteration-count: 2; /*Safari and Chrome*/
+    animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+    top: 60vh;
+    left: 14vw;
+  }
+
+  // 船飘走的动画
+  @keyframes boatSwimming {
+    0% {
+      top: 60vh;
+      left: 14vw;
+    }
+
+    // 20% {
+    //   top: 48vh;
+    //   left: 42vh;
+    // }
+    // 40% {
+    //   top: 36vh;
+    //   left: 57vh;
+    // }
+    // 60% {
+    //   top: 24vh;
+    //   left: 72vh;
+    // }
+    // 80% {
+    //   top: 12vh;
+    //   left: 87vh;
+    // }
+    100% {
+      top: 43vh;
+      left: 70vw;
+    }
+  }
+
+  .boat img {
+    animation: boatSmall 150s linear;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    -webkit-animation-direction: alternate;
+    /* Safari 和 Chrome */
+    animation-iteration-count: 1;
+    // -webkit-animation-iteration-count:2; /*Safari and Chrome*/
+    animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+    width: 62vh;
+    height: 32vh;
+  }
+
+  // 船缩小的动画
+  @keyframes boatSmall {
+    0% {
+      width: 62vh;
+      height: 32vh;
+      opacity: 1;
+    }
+
+    100% {
+      width: 0vh;
+      height: 0vh;
+      opacity: 0.8;
+    }
+  }
+
+  .messageboard-page {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 60px;
+  }
+}
+
+/*移动端*/
+@media only screen and (max-device-width: 768px) {
+  .WriteMessageFrameFadeIn {
+    background-color: @fore_color;
+    margin: auto 1rem;
+    .myflex(start);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30vh;
+    padding: 1.5rem 1.5rem 1.5rem 1rem;
+    animation: FadeIn 0.2s linear;
+    animation-fill-mode: forwards;
+
+    overflow: hidden;
+  }
+
+  .WriteMessageFrameFadeOut {
+    background-color: @fore_color;
+    margin: auto 1rem;
+    .myflex(start);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 30vh;
+    padding: 1.5rem 1.5rem 2rem 1rem;
+
+    animation: FadeOut 0.2s linear;
+    animation-fill-mode: forwards;
+    overflow: hidden;
+  }
+
+  .MessageBoardCover {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    background: url(../../static/img/LeaveMessageBack.jpg) no-repeat 50% #cef;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .boat {
+    display: block;
+    position: absolute;
+    width: 30vw;
+    height: 15vw;
+    top: 58vh;
+    left: 18vw;
+  }
+
+  .boat img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .MessageBoardListBottom {
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: @FontColorGrayDeep;
+    border: 1px solid @back_color;
+  }
+}
+
+@keyframes FadeIn {
+  0% {
+    transform: scale(0.9);
+    height: 4.5rem;
+  }
+
+  20% {
+    transform: scale(0.925);
+    height: 5rem;
+  }
+
+  60% {
+    transform: scale(0.95);
+    height: 6rem;
+  }
+
+  80% {
+    transform: scale(0.975);
+    height: 7rem;
+  }
+
+  100% {
+    transform: scale(1);
+    height: 7.5rem;
+  }
+}
+
+@keyframes FadeOut {
+  0% {
+    transform: scale(0.9);
+    height: 7.5rem;
+  }
+
+  20% {
+    transform: scale(0.925);
+    height: 7rem;
+  }
+
+  60% {
+    transform: scale(0.95);
+    height: 6rem;
+  }
+
+  80% {
+    transform: scale(0.975);
+    height: 5rem;
+  }
+
+  100% {
+    transform: scale(1);
+    height: 4.5rem;
+  }
+}
+
+.WriteMessageFrameLeft {
+  width: 4rem;
+  text-align: center;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.WriteMessageFrameLeft img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 5px;
+}
+
+.WriteMessageFrameContent {
+  flex: 1;
+  height: 4.5rem;
+  /*line-height: 4.5rem;*/
+  position: relative;
+  padding: 0.5rem 0 0 0.5rem;
+  border: 1px solid @BorderColor;
+}
+
+.WriteMessageFrameContentColorBorder {
+  border: 1px solid @ThemeColor;
+}
+
+.WriteMessageFrameContent textarea {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+.OpenMessageSubmit {
+  .myflex(center);
+  margin-top: 1.4rem;
+
+  animation: MessageSubmitDiv 0.3s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes MessageSubmitDiv {
+  0% {
+    transform: translateY(-1rem);
+  }
+
+  20% {
+    transform: translateY(-0.8rem);
+  }
+
+  40% {
+    transform: translateY(-0.6rem);
+  }
+
+  60% {
+    transform: translateY(-0.4rem);
+  }
+
+  80% {
+    transform: translateY(-0.2rem);
+  }
+
+  100% {
+    transform: translateY(0rem);
+  }
+}
+
+.LeaveMessageName {
+  flex: 1;
+}
+
+.LeaveMessageName input {
+  width: 8rem;
+  height: 1.5rem;
+  border: 1px solid @ThemeColor;
+}
+
+.OpenMessageSubmitButton {
+  background-color: @ThemeColor;
+  padding: 0.3rem 1rem;
+  color: @FontColorWhite;
+  width: 2rem;
+  font-size: 0.8rem;
+  border-radius: 2px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.EmotionButton {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.TextAreaCover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 5rem;
+  line-height: 5rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  background-color: @fore_color;
+}
+
+.MessageBoxWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  opacity: 0.6;
+  filter: opacity(60);
+  background-color: #000;
+  transition: all 0s ease 0s;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.CloseAnswerMessage {
+  position: absolute;
+  right: -1rem;
+  top: -1rem;
+  cursor: pointer;
+}
+
+.weathDev {
+  padding: 1rem 0.5rem;
+}
+
+.weathNo {
+  display: none;
+}
+
+.weathTitle {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.weathContent {
+  border-top: none;
+  padding-bottom: 0;
+  padding-top: 1rem;
+}
+
+.weathWeek {
+  padding-bottom: .3rem;
+}
+
+.weathDay {
+  opacity: .5;
+  font-size: 0.9rem;
+  padding-bottom: .3rem;
+}
+
+.temperature {
+  font-size: 0.8rem;
+  padding-bottom: .3rem;
+}
+
+.weathIcon {
+  padding-bottom: .3rem;
+  font-size: 2.2rem;
+}
+
+.citySpan {
+  font-size: 1.1rem;
+}
+
+.weathChinese {
+  font-size: .9rem;
+  overflow: hidden;
+  min-width: 0;
+  -webkit-box-flex: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  margin-bottom: 0.3rem;
+}

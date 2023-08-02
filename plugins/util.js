@@ -123,6 +123,10 @@ Vue.prototype.SQFrontAjax = function (Para) {
  * 返回对象类型
  */
 Vue.prototype.GetLocalStorage = function (StorageName) {
+  if(typeof localStorage === 'undefined'){
+    return {};
+  }
+
   var Storage = localStorage.getItem(StorageName);
   if (Storage) {
     return JSON.parse(Storage);
@@ -138,6 +142,8 @@ Vue.prototype.GetLocalStorage = function (StorageName) {
  * @constructor
  */
 Vue.prototype.SetLocalStorage = function (StorageName, Data) {
+  if(typeof localStorage === 'undefined') return;
+
   var Storage = localStorage.getItem(StorageName);
   // 如果表存在，修改表中字段名
   if (Storage) {
@@ -146,9 +152,7 @@ Vue.prototype.SetLocalStorage = function (StorageName, Data) {
     StorageObject[Data.Key] = Data.Value;
     // 重新将存储
     localStorage.setItem(StorageName, JSON.stringify(StorageObject));
-  }
-  //如果表不存在直接存储
-  else {
+  }else {//如果表不存在直接存储
     var Object = {};
     Object[Data.Key] = Data.Value;
     localStorage.setItem(StorageName, JSON.stringify(Object));
