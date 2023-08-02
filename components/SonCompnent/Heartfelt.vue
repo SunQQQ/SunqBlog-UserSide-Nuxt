@@ -12,10 +12,8 @@
       return{
         HeartfeltContent:'',
         HeartfeltWritter:'',
-        // LocalHeartFeltData: this.GetLocalStorage('SunqBlog') ? this.GetLocalStorage('SunqBlog').HeartFeltData : '', //本地缓存的心声数据
-        LocalHeartFeltData: '', //本地缓存的心声数据
-        // LastLoginDate: this.GetLocalStorage('SunqBlog') ? this.GetLocalStorage('SunqBlog').LastLoginDate : '',      //最近一次登录时间
-        LastLoginDate: '',      //最近一次登录时间
+        LocalHeartFeltData: this.GetLocalStorage('SunqBlog') ? this.GetLocalStorage('SunqBlog').HeartFeltData : '', //本地缓存的心声数据
+        LastLoginDate: this.GetLocalStorage('SunqBlog') ? this.GetLocalStorage('SunqBlog').LastLoginDate : '',      //最近一次登录时间
         IntervalTime:-1
       }
     },
