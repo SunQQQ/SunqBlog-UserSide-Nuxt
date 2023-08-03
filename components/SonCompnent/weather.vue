@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      class="BigBlock AboutMeMarginTop weathDev"
-      :class="city ? '' : 'weathNo'"
-    >
+    <div class="BigBlock AboutMeMarginTop weathDev" v-if="city">
       <div class="TitleFontLine weathTitle">
         <span class="citySpan">{{ city }}</span
         >天气
@@ -35,56 +32,8 @@
         </div>
       </div>
     </div>
-
-    <div class="BigBlock AboutMeMarginTop" >
-      <div class="TitleFontLine">联系我</div>
-      <div class="BlogStatistic" style="border-top: none; padding-bottom: 0">
-        <div class="BlogStatisticItem">
-          <a href="https://github.com/SunQQQ" target="_blank"
-            ><i
-              class="iconfont icon-github AboutMeIcon"
-              style="color: #948aec"
-            ></i
-          ></a>
-        </div>
-        <div
-          class="BlogStatisticItem my-pointer"
-          @click="infoMessage('13213074006')"
-        >
-          <i
-            class="iconfont AboutMeIcon icon-weixin"
-            style="color: #f46e65"
-          ></i>
-        </div>
-        <div
-          class="BlogStatisticItem my-pointer"
-          @click="infoMessage('1585437938@qq.com')"
-        >
-          <i
-            class="iconfont icon-youxiang AboutMeIcon"
-            style="color: #49a9ee"
-          ></i>
-        </div>
-        <div class="BlogStatisticItem">
-          <a
-            href="https://www.zhihu.com/people/s-q-51-44-23/activities"
-            target="_blank"
-            ><i
-              class="iconfont icon-zhihu AboutMeIcon"
-              style="color: #3dbd7d"
-            ></i
-          ></a>
-        </div>
-        <div class="BlogStatisticItem">
-          <a href="https://blog.csdn.net/sun_qqq" target="_blank"
-            ><i
-              class="iconfont icon-CN_csdnnet AboutMeIcon"
-              style="color: #f78e3d"
-            ></i
-          ></a>
-        </div>
-      </div>
-    </div>
+    <!-- 存在少数访客无法获取所在城市定位的清空，此时将展示联系我组件 -->
+    <concatMe v-if="!city"></concatMe>
   </div>
 </template>
 
@@ -92,13 +41,17 @@
 import axios from "axios";
 import weekJson from '@/static/map/week.json';
 import weathJson from '@/static/map/weath.json';
+import concatMe from '@/components/SonCompnent/concatMe' 
 export default {
   name: "weather",
   data: function () {
     return {
       weathArray: [],
-      city: "",
+      city: ""
     };
+  },
+  components:{
+    concatMe
   },
   methods: {
     // 设置天气预报模块

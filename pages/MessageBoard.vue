@@ -217,8 +217,7 @@ export default {
       MessageAnswerFrame: false, //回复留言弹框
       FadeAnimate: false, // 弹框显隐动画
       AticleBottom: false, // 文章底线
-      buttonAnimate: false, // 博客入口按钮动画
-      city: ""
+      buttonAnimate: false // 博客入口按钮动画
     };
   },
   methods: {
