@@ -92,42 +92,8 @@
           </div>
           <div class="BlogIndexContentRight messageboard-page" style="border: 1px solid #e9e9e9; border-radius: 3px">
             <div class="Module" style="padding: 0 0 0.5rem; background-color: transparent">
-              <div class="GitPart" @mouseenter="setButtonAnimate(true)" @mouseleave="setButtonAnimate(false)">
-                <div class="TopBackBlack"></div>
-                <div class="GitPic">
-                  <img src="../static/img/ZhihuIcon.jpg" />
-                </div>
-                <div class="GitBack">
-                  <i class="iconfont TopBackBlackGit icon-github1"></i>
-                </div>
-                <div class="Content">
-                  <div class="GitName">孙权的Github</div>
-                  <a class="BlueButton" :class="buttonAnimate ? 'open_animate' : ''" href="https://github.com/SunQQQ"
-                    target="_blank" @click="readCode()">博客源码</a>
-                  <div class="BlogStatistic">
-                    <div class="BlogStatisticItem">
-                      <div class="BlogStatisticItemNum">49</div>
-                      <div class="BlogStatisticItemText AboutMeGitData">
-                        Followers
-                      </div>
-                    </div>
-                    <div class="BlogStatisticItem">
-                      <div class="BlogStatisticItemNum">160</div>
-                      <div class="BlogStatisticItemText AboutMeGitData">
-                        Star
-                      </div>
-                    </div>
-                    <div class="BlogStatisticItem">
-                      <div class="BlogStatisticItemNum">17</div>
-                      <div class="BlogStatisticItemText AboutMeGitData">
-                        Repositories
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <weather></weather>
+              <githubData/>
+              <weather/>
             </div>
           </div>
         </div>
@@ -188,11 +154,13 @@
 import Pagination from "@/components/SonCompnent/Pagination";
 import Emotion from "@/components/SonCompnent/Emotion";
 import weather from "@/components/SonCompnent/weather";
+import githubData from "@/components/SonCompnent/githubData";
+
 
 export default {
   name: "MessageBoard",
   layout:'blog',
-  components: { Pagination, Emotion,weather },
+  components: { Pagination, Emotion,weather,githubData },
   computed: {
     MessageText: {
       get() {
@@ -431,16 +399,6 @@ export default {
       }
     },
 
-    // 查看源码
-    readCode: function () {
-      // 创建日志
-      this.createLog({
-        moduleType: "button",
-        operateType: "查看源码",
-        operateContent: "留言板入口",
-      });
-    },
-
     contact: function (operateContent) {
       // 创建日志
       this.createLog({
@@ -448,11 +406,6 @@ export default {
         operateType: "点击联系途径",
         operateContent: operateContent,
       });
-    },
-
-    // 设置按钮动画的开始与停止
-    setButtonAnimate: function (status) {
-      this.buttonAnimate = status;
     },
 
     // 联系我的弹出框
@@ -476,7 +429,7 @@ export default {
       operateType: "选择菜单",
       operateContent: "留言",
     });
-  },
+  }
 };
 </script>
 

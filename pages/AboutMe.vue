@@ -180,49 +180,8 @@
           </div>
         </div>
         <div class="RightPart">
-          <div
-            class="GitPart"
-            @mouseenter="setButtonAnimate(true)"
-            @mouseleave="setButtonAnimate(false)"
-          >
-            <div class="TopBackBlack"></div>
-            <div class="GitPic">
-              <img src="../static/img/ZhihuIcon.jpg" />
-            </div>
-            <div class="GitBack">
-              <i class="iconfont TopBackBlackGit icon-github1"></i>
-            </div>
-            <div class="Content">
-              <div class="GitName">孙权的Github</div>
-              <a
-                class="BlueButton"
-                :class="buttonAnimate ? 'open_animate' : ''"
-                href="https://github.com/SunQQQ"
-                target="_blank"
-                >博客源码</a
-              >
-              <div class="BlogStatistic">
-                <div class="BlogStatisticItem">
-                  <div class="BlogStatisticItemNum">75</div>
-                  <div class="BlogStatisticItemText AboutMeGitData">
-                    Followers
-                  </div>
-                </div>
-                <div class="BlogStatisticItem">
-                  <div class="BlogStatisticItemNum">230</div>
-                  <div class="BlogStatisticItemText AboutMeGitData">Star</div>
-                </div>
-                <div class="BlogStatisticItem">
-                  <div class="BlogStatisticItemNum">19</div>
-                  <div class="BlogStatisticItemText AboutMeGitData">
-                    Repositories
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <concatMe></concatMe>
+          <githubData/>
+          <concatMe/>
         </div>
       </div>
       <Heartfelt></Heartfelt>
@@ -233,6 +192,7 @@
 <script>
 import Heartfelt from "@/components/SonCompnent/Heartfelt";
 import concatMe from "@/components/SonCompnent/concatMe";
+import githubData from "@/components/SonCompnent/githubData";
 
 export default {
   name: "AboutMe",
@@ -244,7 +204,8 @@ export default {
   },
   components: {
     Heartfelt,
-    concatMe
+    concatMe,
+    githubData
   },
   methods: {
     // 设置按钮动画的开始与停止
