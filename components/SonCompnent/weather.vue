@@ -2,28 +2,20 @@
   <div>
     <div class="BigBlock AboutMeMarginTop weathDev" v-if="city">
       <div class="TitleFontLine weathTitle">
-        <span class="citySpan">{{ city }}</span
-        >天气
+        <span class="citySpan">{{ city }}</span>天气
       </div>
       <div class="BlogStatistic weathContent">
-        <div
-          class="BlogStatisticItem borderRight"
-          v-for="(item, i) in weathArray"
-          v-bind:key="i"
-        >
+        <div class="BlogStatisticItem borderRight" v-for="(item, i) in  weathArray " v-bind:key="i">
           <div class="weathWeek" v-html="item.week"></div>
           <!-- <div class="weathDay">11月23日</div> -->
           <div class="weathDay">{{ item.date }}</div>
           <div class="weathIcon">
-            <i
-              :class="`iconfont ${item.dayweatherIcon}`"
-              style="font-size: 1.8rem; color: #03a9f47d"
-            ></i>
+            <i :class="`iconfont ${item.dayweatherIcon}`" :style="{fontSize: '1.8rem', color: `${item.dayweathColor}`}"></i>
             <!-- <svg class="icon" aria-hidden="true">
                         <use :xlink:href="`#${item.dayweatherIcon}`"></use>
                       </svg> -->
           </div>
-          <div class="weathChinese" :title="item.dayweather">
+          <div class="weathChinese" :title=" item.dayweather ">
             {{ item.dayweather }}
           </div>
           <div class="temperature">
@@ -33,7 +25,7 @@
       </div>
     </div>
     <!-- 存在少数访客无法获取所在城市定位的清空，此时将展示联系我组件 -->
-    <concatMe v-if="!city"></concatMe>
+    <concatMe v-if=" !city "></concatMe>
   </div>
 </template>
 
@@ -41,7 +33,7 @@
 import axios from "axios";
 import weekJson from '@/static/map/week.json';
 import weathJson from '@/static/map/weath.json';
-import concatMe from '@/components/SonCompnent/concatMe' 
+import concatMe from '@/components/SonCompnent/concatMe'
 export default {
   name: "weather",
   data: function () {
@@ -50,7 +42,7 @@ export default {
       city: ""
     };
   },
-  components:{
+  components: {
     concatMe
   },
   methods: {
@@ -104,7 +96,8 @@ export default {
 
             item.date =
               item.date.split("-")[1] + "月" + item.date.split("-")[2] + "日";
-            item.dayweatherIcon = weathJson[item.dayweather];
+            item.dayweatherIcon = weathJson[item.dayweather].icon;
+            item.dayweathColor = weathJson[item.dayweather].color;
           });
           weathArray.pop();
           that.weathArray = weathArray;
