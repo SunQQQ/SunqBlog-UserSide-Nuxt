@@ -397,23 +397,6 @@ export default {
       } else {
         this.$refs["LeaveMessageTextArea"].focus();
       }
-    },
-
-    contact: function (operateContent) {
-      // 创建日志
-      this.createLog({
-        moduleType: "button",
-        operateType: "点击联系途径",
-        operateContent: operateContent,
-      });
-    },
-
-    // 联系我的弹出框
-    infoMessage: (message) => {
-      this.$store.commit('ChangeTip', {
-        Show: true,
-        Title: message
-      });
     }
   },
   mounted: function () {
