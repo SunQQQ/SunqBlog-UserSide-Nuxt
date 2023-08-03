@@ -10,12 +10,12 @@
                 class="iconfont icon-person AboutMeIcon"
                 style="color: #49a9ee"
               ></i
-              >本博客不强制游客注册/登录，留言/评论等功能只需填入昵称，即可使用。
+              >本博客不强制游客注册/登录，留言/评论等功能只需随意填入昵称，即可使用。
             </p>
             <p>
               <i
                 class="iconfont AboutMeIcon icon-github"
-                style="color: #948aec"
+                style="color: #f78e3d"
               ></i
               >对外开放管理后台、流量数据等。让游客全场景体验个人网站的运营乐趣。
             </p>
@@ -28,8 +28,15 @@
             </p>
             <p>
               <i
-                class="iconfont AboutMeIcon icon-fuwuqi"
+                class="iconfont icon-biaoqian AboutMeIcon"
                 style="color: #f78e3d"
+              ></i
+              >用户端所有组件手写封装，释放设计上的想象力。管理端组件全部第三方，旨在极速搭建。
+            </p>
+            <p>
+              <i
+                class="iconfont AboutMeIcon icon-fuwuqi"
+                style="color: #948aec"
               ></i
               >用户端、管理后台、后端接口、UI设计、服务器部署全部由一人维护。持续优化，随时更新。
             </p>
@@ -45,7 +52,7 @@
                 class="iconfont icon-aihao1 AboutMeIcon"
                 style="color: #f46e65"
               ></i
-              >源码在<a href="https://github.com/SunQQQ" target="_blank">Github</a>整体获得230余赞，亦有技术交流群共同学习。
+              ><a href="https://github.com/SunQQQ" target="_blank">源码</a>在Github整体获得230余赞，亦有技术交流群可加入。
             </p>
           </div>
 
@@ -70,7 +77,7 @@
                 class="iconfont AboutMeIcon icon-fuwuqi"
                 style="color: #f78e3d"
               ></i
-              >服务端语言使用Node.js、框架使用Express，博客部署在Nginx、使用Linux服务器
+              >服务端语言使用Node.js、框架使用Express，博客部署在Nginx
             </p>
             <p>
               <i
@@ -232,6 +239,8 @@ export default {
   font-size: 14px;
   height: 1rem;
   padding-left: 0.5rem;
+  color: @DefaultFontColor;
+  font-weight: normal;
 }
 
 .about-url-card {
