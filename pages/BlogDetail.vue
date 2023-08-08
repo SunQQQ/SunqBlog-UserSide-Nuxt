@@ -282,7 +282,7 @@ export default {
                 Value: That.ArticleCommentNickName,
               });
 
-              this.$store.commit("ChangeTip", {
+              That.$store.commit("ChangeTip", {
                 Show: true,
                 Title: "评论成功",
               });
