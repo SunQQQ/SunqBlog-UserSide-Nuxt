@@ -33,7 +33,7 @@
                 <!--阻止触发CloseMessageSubmit-->
                 <input placeholder="输入你的大名或昵称" v-model="MessageLeaveName" @click.stop="" />
               </div>
-              <div class="OpenMessageSubmitButton" @click="MessageSubmit()">
+              <div class="OpenMessageSubmitButton" @click="MessageSubmit(false)">
                 提交
               </div>
             </div>
@@ -76,7 +76,7 @@
                     <div class="DateAnswerLeft">
                       {{ item.MessageLeaveDate }}
                     </div>
-                    <div class="DateAnswerRight" @click="AnswerMessage(item.MessageLeaveName)">
+                    <div class="DateAnswerRight" @click="AnswerMessage(item)">
                       回复
                     </div>
                   </div>
@@ -135,7 +135,7 @@
               <div class="LeaveMessageName">
                 <input placeholder="输入你的大名或昵称" v-model="MessageLeaveName" />
               </div>
-              <div class="OpenMessageSubmitButton" @click="MessageSubmit()">
+              <div class="OpenMessageSubmitButton" @click="MessageSubmit(true)">
                 提交
               </div>
             </div>
@@ -185,7 +185,8 @@ export default {
       MessageAnswerFrame: false, //回复留言弹框
       FadeAnimate: false, // 弹框显隐动画
       AticleBottom: false, // 文章底线
-      buttonAnimate: false // 博客入口按钮动画
+      buttonAnimate: false, // 博客入口按钮动画
+      parentId: ""
     };
   },
   methods: {
@@ -218,7 +219,7 @@ export default {
     },
 
     // 提交留言
-    MessageSubmit: function () {
+    MessageSubmit: function (tag) {
       var That = this;
 
       if (this.$store.getters.GetMessageText && this.MessageLeaveName) {
@@ -236,6 +237,7 @@ export default {
               MessageLeaveDate: new Date(),
               LocationCityName: LocationCityName,
               iconNo: iconNo,
+              parentId: tag ? That.parentId : "" // 留言时此标示传false，回复时传true
             },
             Success: function () {
               That.$store.commit("ChangeTip", {
@@ -307,14 +309,20 @@ export default {
       }
     },
 
-    // 打开回复留言弹框
-    AnswerMessage: function (AnswedPerson) {
+    /**
+     * 打开回复留言弹框。
+     * 点击某条留言数据的回复按钮时，触发此方法。
+     * 弹出回复留言弹框，根据缓存回填出留言人信息，准备好输入框光标等动作
+     */
+    AnswerMessage: function (item) {
       var That = this;
       this.MessageAnswerFrame = true;
       this.FadeAnimate = true;
 
       // 填写@某人
-      this.$store.commit("ChangeMessageText", "@" + AnswedPerson + ":");
+      this.$store.commit("ChangeMessageText", "@" + item.MessageLeaveName + ":");
+      // 父级评论的id
+      this.parentId = item.parentId ? item.parentId : item._id;
 
       // 等弹框Dom渲染完毕后再操作Dom
       setTimeout(function () {
