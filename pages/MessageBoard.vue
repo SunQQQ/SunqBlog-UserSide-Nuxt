@@ -2,38 +2,58 @@
   <transition name="Fade" mode="out-in">
     <div style="position: relative">
       <div class="MessageBoardCover" @click="CloseMessageSubmit">
-        <div :class="
-          OpenMessageSubmitValue
-            ? 'WriteMessageFrameFadeIn'
-            : 'WriteMessageFrameFadeOut'
-        ">
+        <div
+          :class="
+            OpenMessageSubmitValue
+              ? 'WriteMessageFrameFadeIn'
+              : 'WriteMessageFrameFadeOut'
+          "
+        >
           <div class="WriteMessageFrameLeft">
             <img src="../static/img/DefaultHeadIcon.jpg" />
             <div>欢迎你来</div>
           </div>
           <div style="flex: 1">
-            <div :class="
-              OpenTextAreaCover
-                ? 'WriteMessageFrameContent'
-                : 'WriteMessageFrameContent WriteMessageFrameContentColorBorder'
-            ">
+            <div
+              :class="
+                OpenTextAreaCover
+                  ? 'WriteMessageFrameContent'
+                  : 'WriteMessageFrameContent WriteMessageFrameContentColorBorder'
+              "
+            >
               <!--阻止触发CloseMessageSubmit-->
-              <textarea ref="LeaveMessageTextArea" placeholder="输入留言" v-model="MessageText" @click.stop="">
+              <textarea
+                ref="LeaveMessageTextArea"
+                placeholder="输入留言"
+                v-model="MessageText"
+                @click.stop=""
+              >
               </textarea>
               <span class="EmotionButton" @click="OpenEmotions()">
                 <i class="iconfont icon-face IconfontSize"></i>
               </span>
               <!--需阻止冒泡，否则会冒泡到最上层，触发CloseMessageSubmit方法。该方法逻辑与此处方法操作相反-->
-              <div class="TextAreaCover" @click.stop="OpenMessageSubmit()" v-if="OpenTextAreaCover">
+              <div
+                class="TextAreaCover"
+                @click.stop="OpenMessageSubmit()"
+                v-if="OpenTextAreaCover"
+              >
                 来都来啦，留个脚印吧
               </div>
             </div>
             <div class="OpenMessageSubmit">
               <div class="LeaveMessageName">
                 <!--阻止触发CloseMessageSubmit-->
-                <input placeholder="输入你的大名或昵称" v-model="MessageLeaveName" @click.stop="" />
+                <input
+                  placeholder="输入你的大名或昵称"
+                  v-model="MessageLeaveName"
+                  @click.stop=""
+                />
               </div>
-              <div class="OpenMessageSubmitButton" @click="MessageSubmit(false)">
+              <div
+                class="OpenMessageSubmitButton"
+                @click="MessageSubmit(false)"
+              >
                 提交
               </div>
             </div>
@@ -46,38 +66,94 @@
 
       <div class="BlogIndexContent">
         <div class="BlogFlex">
-          <div class="BlogIndexContentLeft" style="
+          <div
+            class="BlogIndexContentLeft"
+            style="
               background-color: #ffffff;
               margin-top: 1rem;
               border: 1px solid #e9e9e9;
               border-radius: 3px;
-            ">
+            "
+          >
             <div class="CommentList">
-              <div class="CommentItem" v-for="(item, i) in MessageList" v-bind:key="i">
-                <div class="CommentItemIcon">
-                  <!--如果用户名是sunq，直接展示我的专属头像。如果不是sunq，展示库里存的本条数据的头像，如果数据里该字段为空，展示默认头像-->
-                  <img :src="getIconAdress(item.iconNo)" v-if="item.MessageLeaveName != 'sunq'" />
-                  <img src="../static/img/ZhihuIcon.jpg" v-if="item.MessageLeaveName == 'sunq'" />
-                </div>
-                <div class="CommentItemContent">
-                  <div>
-                    {{ item.MessageLeaveName }}
-                    <span v-if="
-                      item.LocationCityName &&
-                      item.LocationCityName.length > 0
-                    ">
-                      <i class="iconfont icon-buoumaotubiao23 LocationIconfont"></i>{{ item.LocationCityName }}
-                    </span>
+              <div v-for="(item, i) in MessageList" v-bind:key="i">
+                <div class="CommentItem">
+                  <div class="CommentItemIcon">
+                    <!--如果用户名是sunq，直接展示我的专属头像。如果不是sunq，展示库里存的本条数据的头像，如果数据里该字段为空，展示默认头像-->
+                    <img
+                      :src="getIconAdress(item.iconNo)"
+                      v-if="item.MessageLeaveName != 'sunq'"
+                    />
+                    <img
+                      src="../static/img/ZhihuIcon.jpg"
+                      v-if="item.MessageLeaveName == 'sunq'"
+                    />
                   </div>
-                  <div class="ArticleCommentText" v-html="item.MessageText">
-                    {{ item.MessageText }}
-                  </div>
-                  <div class="DateAnswer">
-                    <div class="DateAnswerLeft">
-                      {{ item.MessageLeaveDate }}
+                  <div class="CommentItemContent">
+                    <div>
+                      {{ item.MessageLeaveName }}
+                      <span
+                        v-if="
+                          item.LocationCityName &&
+                          item.LocationCityName.length > 0
+                        "
+                      >
+                        <i
+                          class="iconfont icon-buoumaotubiao23 LocationIconfont"
+                        ></i
+                        >{{ item.LocationCityName }}
+                      </span>
                     </div>
-                    <div class="DateAnswerRight" @click="AnswerMessage(item)">
-                      回复
+                    <div class="ArticleCommentText" v-html="item.MessageText">
+                      {{ item.MessageText }}
+                    </div>
+                    <div class="DateAnswer">
+                      <div class="DateAnswerLeft">
+                        {{ item.MessageLeaveDate }}
+                      </div>
+                      <div class="DateAnswerRight" @click="AnswerMessage(item)">
+                        回复
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="CommentItem" style="margin-left:10px" v-for="(sonItem, i) in item.son" v-bind:key="i">
+                  <div class="CommentItemIcon">
+                    <!--如果用户名是sunq，直接展示我的专属头像。如果不是sunq，展示库里存的本条数据的头像，如果数据里该字段为空，展示默认头像-->
+                    <img
+                      :src="getIconAdress(sonItem.iconNo)"
+                      v-if="sonItem.MessageLeaveName != 'sunq'"
+                    />
+                    <img
+                      src="../static/img/ZhihuIcon.jpg"
+                      v-if="sonItem.MessageLeaveName == 'sunq'"
+                    />
+                  </div>
+                  <div class="CommentItemContent">
+                    <div>
+                      {{ sonItem.MessageLeaveName }}
+                      <span
+                        v-if="
+                          sonItem.LocationCityName &&
+                          sonItem.LocationCityName.length > 0
+                        "
+                      >
+                        <i
+                          class="iconfont icon-buoumaotubiao23 LocationIconfont"
+                        ></i
+                        >{{ sonItem.LocationCityName }}
+                      </span>
+                    </div>
+                    <div class="ArticleCommentText" v-html="sonItem.MessageText">
+                      {{ sonItem.MessageText }}
+                    </div>
+                    <div class="DateAnswer">
+                      <div class="DateAnswerLeft">
+                        {{ sonItem.MessageLeaveDate }}
+                      </div>
+                      <div class="DateAnswerRight" @click="AnswerMessage(item)">
+                        回复
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -90,50 +166,71 @@
               你滑到我底线啦
             </div>
           </div>
-          <div class="BlogIndexContentRight messageboard-page" style="border: 1px solid #e9e9e9; border-radius: 3px">
-            <div class="Module" style="padding: 0 0 0.5rem; background-color: transparent">
-              <githubData/>
-              <weather/>
+          <div
+            class="BlogIndexContentRight messageboard-page"
+            style="border: 1px solid #e9e9e9; border-radius: 3px"
+          >
+            <div
+              class="Module"
+              style="padding: 0 0 0.5rem; background-color: transparent"
+            >
+              <githubData />
+              <weather />
             </div>
           </div>
         </div>
-        <Pagination v-on:PaginationToParent="ValueByPagition" ref="Pagi"></Pagination>
+        <Pagination
+          v-on:PaginationToParent="ValueByPagition"
+          ref="Pagi"
+        ></Pagination>
       </div>
       <!--回复留言弹框PageActive-->
-      <div style="
+      <div
+        style="
           position: fixed;
           top: 0;
           bottom: 0;
           left: 0;
           right: 0;
           z-index: 1000;
-        " v-if="MessageAnswerFrame">
+        "
+        v-if="MessageAnswerFrame"
+      >
         <div class="MessageBoxWrapper" @click="CloseAnswerMessage()"></div>
-        <div class="WriteMessageFrameFadeIn" style="
+        <div
+          class="WriteMessageFrameFadeIn"
+          style="
             position: fixed;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-          ">
+          "
+        >
           <div class="WriteMessageFrameLeft">
             <img src="../static/img/DefaultHeadIcon.jpg" />
             <div>回复留言</div>
           </div>
           <div style="flex: 1; position: relative">
-            <div class="
-                WriteMessageFrameContent
-                WriteMessageFrameContentColorBorder
-              ">
-              <textarea ref="AnswerMessageContentDom" placeholder="输入留言" v-model="MessageText"></textarea>
+            <div
+              class="WriteMessageFrameContent WriteMessageFrameContentColorBorder"
+            >
+              <textarea
+                ref="AnswerMessageContentDom"
+                placeholder="输入留言"
+                v-model="MessageText"
+              ></textarea>
               <span class="EmotionButton" @click="OpenEmotions()">
                 <i class="iconfont icon-face IconfontSize"></i>
               </span>
             </div>
             <div class="OpenMessageSubmit">
               <div class="LeaveMessageName">
-                <input placeholder="输入你的大名或昵称" v-model="MessageLeaveName" />
+                <input
+                  placeholder="输入你的大名或昵称"
+                  v-model="MessageLeaveName"
+                />
               </div>
               <div class="OpenMessageSubmitButton" @click="MessageSubmit(true)">
                 提交
@@ -156,11 +253,10 @@ import Emotion from "@/components/SonCompnent/Emotion";
 import weather from "@/components/SonCompnent/weather";
 import githubData from "@/components/SonCompnent/githubData";
 
-
 export default {
   name: "MessageBoard",
-  layout:'blog',
-  components: { Pagination, Emotion,weather,githubData },
+  layout: "blog",
+  components: { Pagination, Emotion, weather, githubData },
   computed: {
     MessageText: {
       get() {
@@ -186,7 +282,7 @@ export default {
       FadeAnimate: false, // 弹框显隐动画
       AticleBottom: false, // 文章底线
       buttonAnimate: false, // 博客入口按钮动画
-      parentId: ""
+      parentId: "",
     };
   },
   methods: {
@@ -224,9 +320,11 @@ export default {
 
       if (this.$store.getters.GetMessageText && this.MessageLeaveName) {
         let MatchedMessageText = That.MatchEmotion(
-          this.$store.getters.GetMessageText
-        ),
-          iconNo = this.GetLocalStorage("SunqBlog").ArticleCommentIcon || Math.round(Math.random() * 4);
+            this.$store.getters.GetMessageText
+          ),
+          iconNo =
+            this.GetLocalStorage("SunqBlog").ArticleCommentIcon ||
+            Math.round(Math.random() * 4);
 
         this.GetLocation(function (LocationCityName) {
           That.SQFrontAjax({
@@ -237,7 +335,7 @@ export default {
               MessageLeaveDate: new Date(),
               LocationCityName: LocationCityName,
               iconNo: iconNo,
-              parentId: tag ? That.parentId : "" // 留言时此标示传false，回复时传true
+              parentId: tag ? That.parentId : "", // 留言时此标示传false，回复时传true
             },
             Success: function () {
               That.$store.commit("ChangeTip", {
@@ -287,7 +385,7 @@ export default {
       var That = this;
 
       this.SQFrontAjax({
-        Url: "/api/MessageRead/foreend",
+        Url: "/api/twoLeavlMessageList/foreend",
         UploadData: {
           PagnationData: {
             Skip: 0,
@@ -302,6 +400,7 @@ export default {
           That.MessageList = data;
         },
       });
+
       // 默认填写留言输入框的昵称
       var LocalCommonUser = this.GetLocalStorage("SunqBlog");
       if (LocalCommonUser.toString() != "{}") {
@@ -320,7 +419,10 @@ export default {
       this.FadeAnimate = true;
 
       // 填写@某人
-      this.$store.commit("ChangeMessageText", "@" + item.MessageLeaveName + ":");
+      this.$store.commit(
+        "ChangeMessageText",
+        "@" + item.MessageLeaveName + ":"
+      );
       // 父级评论的id
       this.parentId = item.parentId ? item.parentId : item._id;
 
@@ -376,10 +478,10 @@ export default {
             That.AticleBottom = true;
             // 停止分页器的滚动监听
             That.$refs.Pagi.SetUpdate(false);
-            That.$store.commit("changeFooter",true); // 展示footer
+            That.$store.commit("changeFooter", true); // 展示footer
           } else {
             That.$refs.Pagi.SetUpdate(true);
-            That.$store.commit("changeFooter",false); // 隐藏footer
+            That.$store.commit("changeFooter", false); // 隐藏footer
             // 创建日志
             That.createLog({
               moduleType: "pageTurn",
@@ -405,14 +507,14 @@ export default {
       } else {
         this.$refs["LeaveMessageTextArea"].focus();
       }
-    }
+    },
   },
   mounted: function () {
     this.MessageRead();
     // 切换Topbar高亮
     this.$store.commit("ChangeActive", 1);
 
-    this.$store.commit("changeFooter",false); // 初始化时隐藏footer
+    this.$store.commit("changeFooter", false); // 初始化时隐藏footer
 
     // 创建日志
     this.createLog({
@@ -420,7 +522,7 @@ export default {
       operateType: "选择菜单",
       operateContent: "留言",
     });
-  }
+  },
 };
 </script>
 
