@@ -117,10 +117,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="CommentItem" v-for="(sonItem, i) in item.son" v-bind:key="i">
-                  <div class="CommentItemMargin">
-
-                  </div>
+                <div class="CommentItem twoLeavl" v-for="(sonItem, i) in item.son" v-bind:key="i">
+                  <div class="CommentItemMargin"></div>
                   <div class="CommentItemIcon">
                     <!--如果用户名是sunq，直接展示我的专属头像。如果不是sunq，展示库里存的本条数据的头像，如果数据里该字段为空，展示默认头像-->
                     <img
@@ -154,7 +152,7 @@
                       <div class="DateAnswerLeft">
                         {{ sonItem.MessageLeaveDate }}
                       </div>
-                      <div class="DateAnswerRight" @click="AnswerMessage(item)">
+                      <div class="DateAnswerRight" @click="AnswerMessage(sonItem)">
                         回复
                       </div>
                     </div>
@@ -399,6 +397,11 @@ export default {
           // 渲染列表
           data.forEach(function (Item) {
             Item.MessageLeaveDate = That.DateFormat(Item.MessageLeaveDate);
+            if(Item.son && Item.son.length>0){
+              Item.son.forEach((sonItem)=>{
+                sonItem.MessageLeaveDate = That.DateFormat(sonItem.MessageLeaveDate);
+              });
+            }
           });
           That.MessageList = data;
         },
