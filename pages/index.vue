@@ -54,8 +54,8 @@
               <div class="TagListHead">
                 <div class="tagTitle">热门博文</div>
                 <div class="search">
-                  <input placeholder="站内搜索" />
-                  <i class="iconfont icon-sousuo searchButton"></i>
+                  <input placeholder="站内搜索" v-model="searchKeyword"/>
+                  <i class="iconfont icon-sousuo searchButton" @click="search()"></i>
                 </div>
               </div>
               <div class="HotArticle">
@@ -152,7 +152,8 @@ export default {
         HotArticlePart: true,
         ArticleTagPart: true
       },
-      stickyTop: 0
+      stickyTop: 0,
+      searchKeyword: "" // 站内搜索关键词
     }
   },
   methods: {
@@ -339,6 +340,9 @@ export default {
     // 监控gitHub模块DOM的鼠标滑入划出事件，鼠标悬停时打开源码按钮动画效果，移出时关闭动画
     enter: function (status) {
       this.buttonAnimate = status;
+    },
+    search(){
+      console.log(this.searchKeyword);
     }
   },
   mounted: function () {
