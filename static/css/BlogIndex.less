@@ -304,6 +304,39 @@
   margin-bottom: 0.5rem;
   margin-right: 0.5rem;
   color:@ThemeColor;
+  display: flex;
+  vertical-align: middle;
+}
+
+.TagListHead .tagTitle{
+  width: 40%;
+}
+
+.TagListHead .search{
+  width: 60%;
+  border-radius: 2px;
+  border: 1px solid #66666668;
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.TagListHead .search input{
+  width: 75%;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  border: none;
+  padding-right: 1px;
+  color: @FontColorGray;
+}
+
+.TagListHead .search .searchButton{
+  color:#66666668;
+  cursor: pointer;
+}
+
+.TagListHead input::placeholder{
+  color: #66666668;
+  font-size: 0.8rem;
 }
 
 .HotArticleItem{
