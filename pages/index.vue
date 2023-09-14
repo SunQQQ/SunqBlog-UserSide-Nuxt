@@ -113,7 +113,7 @@
               <div class="TagListHead">文章分类<span style="color: #aaa;font-size: 0.8rem">（点击筛选呦）</span></div>
               <div class="TagListTr">
                 <div :class="item.TagName != Tags.Active ? 'TagListTd' : 'TagListTdActive'" v-for="item in Tags"
-                  :key="item.id" @click="GetArticle(item.TagName)">{{ item.TagName }}
+                  :key="item.id" @click="getTagArticle(item.TagName)">{{ item.TagName }}
                 </div>
               </div>
             </div>
@@ -153,7 +153,8 @@ export default {
         ArticleTagPart: true
       },
       stickyTop: 0,
-      searchKeyword: "" // 站内搜索关键词
+      searchKeyword: "", // 站内搜索关键词
+      curTag: "" // 当前选中的文章分类
     }
   },
   methods: {
@@ -180,7 +181,7 @@ export default {
       this.GetHotArticle();
     },
     // 获取文章列表
-    GetArticle: function (ArticleTag) {
+    GetArticle: function (ArticleTag,searchKeyWord) {
       var That = this;
 
       this.SQFrontAjax({
@@ -190,7 +191,8 @@ export default {
             Skip: 0,
             Limit: 8
           },
-          ArticleTag: ArticleTag
+          ArticleTag,
+          searchKeyWord
         },
         Success: function (data) {
           // 高亮
@@ -341,8 +343,13 @@ export default {
     enter: function (status) {
       this.buttonAnimate = status;
     },
+    // 根据选中的文章标签，查询文章
+    getTagArticle(tag){
+      this.curTag = tag;
+      this.GetArticle(tag);
+    },
     search(){
-      console.log(this.searchKeyword);
+      this.GetArticle(this.curTag,this.searchKeyword);
     }
   },
   mounted: function () {
