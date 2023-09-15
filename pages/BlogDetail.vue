@@ -45,53 +45,107 @@
           style="padding: 1rem; min-height: unset"
         >
           <div class="ArticleDetailComment">
-            <div class="CommentList">
-              <div
-                class="CommentItem"
-                v-for="(item, i) in ArticleCommentList"
-                v-bind:key="i"
-                if="ArticleCommentList.length != 0"
-              >
-                <div class="CommentItemIcon">
-                  <img
-                    src="../static/img/DefaultHeadIcon.jpg"
-                    v-if="item.ArticleCommentNickName != 'sunq'"
-                  />
-                  <img
-                    src="../static/img/ZhihuIcon.jpg"
-                    v-if="item.ArticleCommentNickName == 'sunq'"
-                  />
-                </div>
-                <div class="CommentItemContent">
-                  <div class="ArticleCommentNickName">
-                    {{ item.ArticleCommentNickName }}
-                    <span
-                      v-if="
-                        item.LocationCityName &&
-                        item.LocationCityName.length > 0
-                      "
-                    >
-                      <i
-                        class="iconfont icon-buoumaotubiao23 LocationIconfont"
-                      ></i
-                      >{{ item.LocationCityName }}
-                    </span>
+            <div class="CommentList" style="border-bottom: 1px solid #e9e9e9">
+              <div v-for="(item, i) in ArticleCommentList" v-bind:key="i">
+                <div class="CommentItem" if="ArticleCommentList.length != 0">
+                  <div class="CommentItemIcon">
+                    <img
+                      src="../static/img/DefaultHeadIcon.jpg"
+                      v-if="item.ArticleCommentNickName != 'sunq'"
+                    />
+                    <img
+                      src="../static/img/ZhihuIcon.jpg"
+                      v-if="item.ArticleCommentNickName == 'sunq'"
+                    />
                   </div>
-                  <div
-                    class="ArticleCommentText"
-                    v-html="item.ArticleCommentText"
-                  >
-                    {{ item.ArticleCommentText }}
-                  </div>
-                  <div class="DateAnswer">
-                    <div class="DateAnswerLeft">
-                      {{ item.ArticleCommentDate }}
+                  <div class="CommentItemContent">
+                    <div class="ArticleCommentNickName">
+                      {{ item.ArticleCommentNickName }}
+                      <span
+                        v-if="
+                          item.LocationCityName &&
+                          item.LocationCityName.length > 0
+                        "
+                      >
+                        <i
+                          class="iconfont icon-buoumaotubiao23 LocationIconfont"
+                        ></i
+                        >{{ item.LocationCityName }}
+                      </span>
                     </div>
                     <div
-                      class="DateAnswerRight"
-                      @click="AnswerComment(item.ArticleCommentNickName,item._id)"
+                      class="ArticleCommentText"
+                      v-html="item.ArticleCommentText"
                     >
-                      回复
+                      {{ item.ArticleCommentText }}
+                    </div>
+                    <div class="DateAnswer">
+                      <div class="DateAnswerLeft">
+                        {{ item.ArticleCommentDate }}
+                      </div>
+                      <div
+                        class="DateAnswerRight"
+                        @click="
+                          AnswerComment(item.ArticleCommentNickName, item._id)
+                        "
+                      >
+                        回复
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="CommentItem twoLeavl"
+                  v-for="(sonItem, i) in item.son"
+                  v-bind:key="i"
+                >
+                  <div class="CommentItemMargin"></div>
+                  <div class="CommentItemIcon">
+                    <img
+                      src="../static/img/DefaultHeadIcon.jpg"
+                      v-if="sonItem.ArticleCommentNickName != 'sunq'"
+                    />
+                    <img
+                      src="../static/img/ZhihuIcon.jpg"
+                      v-if="sonItem.ArticleCommentNickName == 'sunq'"
+                    />
+                  </div>
+                  <div class="CommentItemContent">
+                    <div class="ArticleCommentNickName">
+                      {{ sonItem.ArticleCommentNickName }}
+                      <span
+                        v-if="
+                          sonItem.LocationCityName &&
+                          sonItem.LocationCityName.length > 0
+                        "
+                      >
+                        <i
+                          class="iconfont icon-buoumaotubiao23 LocationIconfont"
+                        ></i
+                        >{{ sonItem.LocationCityName }}
+                      </span>
+                    </div>
+                    <div
+                      class="ArticleCommentText"
+                      v-html="sonItem.ArticleCommentText"
+                    >
+                      {{ sonItem.ArticleCommentText }}
+                    </div>
+                    <div class="DateAnswer">
+                      <div class="DateAnswerLeft">
+                        {{ sonItem.ArticleCommentDate }}
+                      </div>
+                      <div
+                        class="DateAnswerRight"
+                        @click="
+                          AnswerComment(
+                            sonItem.ArticleCommentNickName,
+                            item._id
+                          )
+                        "
+                      >
+                        回复
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -181,7 +235,7 @@ export default {
       ArticleCommentDate: "",
       ArticleCommentList: "",
       BlogDetailSkeletonScreen: true,
-      parentArticleId: "" // 父级评论
+      parentArticleId: "", // 父级评论
     };
   },
   methods: {
@@ -271,7 +325,10 @@ export default {
               ArticleCommentDate: new Date(),
               LocationCityName: LocationCityName,
               // 如果有@，说明是回复的子评论。没有则判断为父级评论
-              parentArticleId: MatchedMessageText.indexOf("@")>-1 ? That.parentArticleId : ""
+              parentArticleId:
+                MatchedMessageText.indexOf("@") > -1
+                  ? That.parentArticleId
+                  : "",
             },
             Success: function () {
               That.GetCommentList();
@@ -313,7 +370,7 @@ export default {
     GetCommentList: function () {
       var That = this;
       this.SQFrontAjax({
-        Url: "/api/ArticleCommentRead/foreend",
+        Url: "/api/twoLevelCommentList/foreend",
         UploadData: {
           ArticleId: this.$route.query._id,
         },
@@ -337,7 +394,7 @@ export default {
       });
     },
     // 回复评论
-    AnswerComment: function (ComentNickName,parentArticleId) {
+    AnswerComment: function (ComentNickName, parentArticleId) {
       this.$store.commit("ChangeMessageText", "@" + ComentNickName + ":");
       this.$refs.MessageText.focus();
       this.parentArticleId = parentArticleId;
@@ -350,18 +407,18 @@ export default {
     AppendMessageText: function () {
       // 光标聚焦
       this.$refs.MessageText.focus();
-    }
+    },
   },
   mounted: function () {
-    window.showMarkedImage = function(e, href) {
-      let el = e.target
+    window.showMarkedImage = function (e, href) {
+      let el = e.target;
       let rfs =
         el.requestFullscreen ||
         el.webkitRequestFullscreen ||
         el.mozRequestFullscreen ||
-        el.msRequestFullscreen
-      if(rfs) rfs.call(el); // 这里rfs()会执行失败，因为rfs返回的是个单纯的函数，没有对象去调用它了
-    }
+        el.msRequestFullscreen;
+      if (rfs) rfs.call(el); // 这里rfs()会执行失败，因为rfs返回的是个单纯的函数，没有对象去调用它了
+    };
 
     // 初始化文章内容
     this.InitPage();
