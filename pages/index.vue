@@ -54,7 +54,7 @@
               <div class="TagListHead">
                 <div class="tagTitle">热门博文</div>
                 <div class="search">
-                  <input placeholder="站内搜索" v-model="searchKeyword"/>
+                  <input placeholder="站内搜索" v-model="searchKeyword" @keydown.enter="search()"/>
                   <i class="iconfont icon-sousuo searchButton" @click="search()"></i>
                 </div>
               </div>
@@ -239,7 +239,8 @@ export default {
             Skip: SelectPage * 8,
             Limit: 8
           },
-          ArticleTag: That.Tags.Active
+          ArticleTag: That.Tags.Active,
+          searchKeyWord: That.searchKeyword
         },
         Success: function (data) {
           data.forEach(function (Item) {
