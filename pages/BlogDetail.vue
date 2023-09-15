@@ -89,7 +89,7 @@
                     </div>
                     <div
                       class="DateAnswerRight"
-                      @click="AnswerComment(item.ArticleCommentNickName)"
+                      @click="AnswerComment(item.ArticleCommentNickName,item._id)"
                     >
                       回复
                     </div>
@@ -181,6 +181,7 @@ export default {
       ArticleCommentDate: "",
       ArticleCommentList: "",
       BlogDetailSkeletonScreen: true,
+      parentArticleId: "" // 父级评论
     };
   },
   methods: {
@@ -269,6 +270,8 @@ export default {
               ArticleCommentText: MatchedMessageText,
               ArticleCommentDate: new Date(),
               LocationCityName: LocationCityName,
+              // 如果有@，说明是回复的子评论。没有则判断为父级评论
+              parentArticleId: MatchedMessageText.indexOf("@")>-1 ? That.parentArticleId : ""
             },
             Success: function () {
               That.GetCommentList();
@@ -302,7 +305,7 @@ export default {
       } else {
         this.$store.commit("ChangeTip", {
           Show: true,
-          Title: "昵称和评论不能为空呦",
+          Title: "昵称和评论不能为空",
         });
       }
     },
@@ -334,9 +337,10 @@ export default {
       });
     },
     // 回复评论
-    AnswerComment: function (ComentNickName) {
+    AnswerComment: function (ComentNickName,parentArticleId) {
       this.$store.commit("ChangeMessageText", "@" + ComentNickName + ":");
       this.$refs.MessageText.focus();
+      this.parentArticleId = parentArticleId;
     },
     // 打开表情包弹框
     OpenEmotions: function () {
